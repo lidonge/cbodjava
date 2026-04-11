@@ -1,6 +1,7 @@
 HELP.md
 target/
 generated-sources1/
+generated-sources2/
 generated-sources/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
