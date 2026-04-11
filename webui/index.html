@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUSTCICS Web UI</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="page-shell">
+    <header class="hero">
+        <div class="hero-copy">
+            <p class="eyebrow">CICS to Spring Boot</p>
+            <h1>CUSTCICS 操作台</h1>
+            <p class="hero-text">
+                这个页面用于直接操作 `cbod.java.cics_vsam.Custcics` 暴露出的
+                `/cics/custcics/main-para` 接口，便于演示 BMS 屏幕输入、CICS 文件语义和 MyBatis 落库流程。
+            </p>
+        </div>
+        <div class="hero-panel">
+            <div class="status-card">
+                <span class="status-label">默认接口</span>
+                <code id="default-endpoint">http://localhost:18080/cics/custcics/main-para</code>
+            </div>
+            <div class="status-card accent">
+                <span class="status-label">支持动作</span>
+                <strong>Q / A / U / D</strong>
+            </div>
+        </div>
+    </header>
+
+    <main class="layout">
+        <section class="panel form-panel">
+            <div class="panel-head">
+                <h2>请求面板</h2>
+                <p>填写 Map 字段，直接调用后端。</p>
+            </div>
+
+            <div class="form-grid">
+                <label class="field field-wide">
+                    <span>接口地址</span>
+                    <input id="endpoint" type="text" value="http://localhost:18080/cics/custcics/main-para">
+                </label>
+
+                <label class="field">
+                    <span>动作</span>
+                    <select id="action">
+                        <option value="Q">Q - Query</option>
+                        <option value="A">A - Add</option>
+                        <option value="U">U - Update</option>
+                        <option value="D">D - Delete</option>
+                    </select>
+                </label>
+
+                <label class="field">
+                    <span>客户号</span>
+                    <input id="customer-id" type="text" value="0000000001" maxlength="10">
+                </label>
+
+                <label class="field">
+                    <span>姓名</span>
+                    <input id="customer-name" type="text" placeholder="ALICE" maxlength="30">
+                </label>
+
+                <label class="field">
+                    <span>电话</span>
+                    <input id="customer-phone" type="text" placeholder="13800138000" maxlength="15">
+                </label>
+
+                <label class="field field-wide">
+                    <span>地址</span>
+                    <input id="customer-address" type="text" placeholder="SHANGHAI" maxlength="50">
+                </label>
+            </div>
+
+            <div class="quick-actions">
+                <button class="preset" data-preset="query-seed">查询种子数据</button>
+                <button class="preset" data-preset="add-demo">填充新增样例</button>
+                <button class="preset" data-preset="update-demo">填充更新样例</button>
+                <button class="preset" data-preset="delete-demo">填充删除样例</button>
+            </div>
+
+            <div class="cta-row">
+                <button id="send-request" class="primary">发送请求</button>
+                <button id="clear-log" class="secondary">清空结果</button>
+            </div>
+        </section>
+
+        <section class="panel output-panel">
+            <div class="panel-head">
+                <h2>交互结果</h2>
+                <p>左侧是请求体，右侧是服务返回。</p>
+            </div>
+
+            <div class="io-grid">
+                <div class="code-block">
+                    <div class="code-head">Request JSON</div>
+                    <pre id="request-preview">{}</pre>
+                </div>
+                <div class="code-block">
+                    <div class="code-head">Response JSON</div>
+                    <pre id="response-preview">尚未发送请求</pre>
+                </div>
+            </div>
+
+            <div class="message-strip" id="message-strip">
+                等待调用
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="./app.js"></script>
+</body>
+</html>
