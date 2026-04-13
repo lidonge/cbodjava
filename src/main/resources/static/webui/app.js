@@ -31,6 +31,28 @@ function refreshRequestPreview() {
     requestPreview.textContent = JSON.stringify(buildPayload(), null, 2);
 }
 
+function applyResponseToForm(data) {
+    if (!data || typeof data !== "object") {
+        return;
+    }
+    if (typeof data["SCR-ACTION"] === "string") {
+        actionInput.value = data["SCR-ACTION"];
+    }
+    if (typeof data["SCR-ID"] === "string") {
+        idInput.value = data["SCR-ID"];
+    }
+    if (typeof data["SCR-NAME"] === "string") {
+        nameInput.value = data["SCR-NAME"];
+    }
+    if (typeof data["SCR-PHONE"] === "string") {
+        phoneInput.value = data["SCR-PHONE"];
+    }
+    if (typeof data["SCR-ADDRESS"] === "string") {
+        addressInput.value = data["SCR-ADDRESS"];
+    }
+    refreshRequestPreview();
+}
+
 function setMessage(text, isError = false) {
     messageStrip.textContent = text;
     messageStrip.classList.toggle("error", isError);
@@ -67,6 +89,9 @@ async function sendRequest() {
         } catch (ignore) {
         }
         responsePreview.textContent = typeof data === "string" ? data : JSON.stringify(data, null, 2);
+        if (typeof data === "object" && data !== null) {
+            applyResponseToForm(data);
+        }
         if (!response.ok) {
             setMessage("请求失败，HTTP " + response.status, true);
             return;
