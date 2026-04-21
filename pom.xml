@@ -77,7 +77,7 @@
           <configuration>
             <sources>
               <source>generated-sources/cbod/src/main/java</source>
-              <source>generated-sources/vsam/src/main/java</source>
+              <!-- <source>generated-sources/minref/src/main/java</source> -->
             </sources>
           </configuration>
         </execution>
