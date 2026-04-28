@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = {"free.servpp.cbodjava", "cbod.java", "free.cobol2java.java"})
-@MapperScan("free.servpp.cbodjava.cics_vsam")
+@MapperScan({"free.servpp.cbodjava.cics_vsam", "free.servpp.cbodjava.cobol"})
 public class CbodjavaApplication {
 
     public static void main(String[] args) {

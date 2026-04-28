@@ -60,10 +60,47 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>3.0.3</version>
+        </dependency>
     </dependencies>
 
 <build>
+  <resources>
+    <resource>
+      <directory>src/main/resources</directory>
+    </resource>
+    <resource>
+      <directory>generated-sources/ags/src/main/resources</directory>
+      <targetPath>static</targetPath>
+      <includes>
+        <include>*.yaml</include>
+        <include>*.yml</include>
+      </includes>
+    </resource>
+    <resource>
+      <directory>generated-sources/ags/src/main/resources</directory>
+      <includes>
+        <include>swagger-ui-urls.properties</include>
+      </includes>
+    </resource>
+  </resources>
   <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <configuration>
+        <excludes>
+          <exclude>**/* copy.java</exclude>
+        </excludes>
+      </configuration>
+    </plugin>
     <plugin>
       <groupId>org.codehaus.mojo</groupId>
       <artifactId>build-helper-maven-plugin</artifactId>
@@ -76,8 +113,10 @@
           </goals>
           <configuration>
             <sources>
-              <source>generated-sources/cbod/src/main/java</source>
-              <!-- <source>generated-sources/minref/src/main/java</source> -->
+              <!-- <source>generated-sources/cbod/src/main/java</source> -->
+              <source>generated-sources/minref/src/main/java</source>
+              <source>generated-sources/ags/src/main/java</source>
+              <source>generated-sources/cost/src/main/java</source>
             </sources>
           </configuration>
         </execution>

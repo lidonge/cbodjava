@@ -1,5 +1,6 @@
 package free.servpp.cbodjava.config;
 
+import free.cobol2java.java.ServiceManager;
 import free.servpp.sppframe.common.IServiceContainer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -14,6 +15,7 @@ public class BootServiceContainer implements IServiceContainer, ApplicationConte
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
+        ServiceManager.setServiceContainer(this);
     }
 
     @Override
