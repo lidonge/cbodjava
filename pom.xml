@@ -113,10 +113,11 @@
           </goals>
           <configuration>
             <sources>
-              <!-- <source>generated-sources/cbod/src/main/java</source> -->
+              <source>generated-sources/cbod/src/main/java</source>
               <source>generated-sources/minref/src/main/java</source>
-              <source>generated-sources/ags/src/main/java</source>
-              <source>generated-sources/cost/src/main/java</source>
+              <source>generated-sources/banks/src/main/java</source>
+              <!-- <source>generated-sources/ags/src/main/java</source> -->
+              <!-- <source>generated-sources/cost/src/main/java</source> -->
             </sources>
           </configuration>
         </execution>
